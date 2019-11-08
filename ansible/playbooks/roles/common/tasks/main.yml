@@ -1,0 +1,5 @@
+- import_tasks: install_global_tools.yml
+  tags: global_tools
+
+- import_tasks: install_sysadmin_tools.yml
+  tags: sysadmin_tools

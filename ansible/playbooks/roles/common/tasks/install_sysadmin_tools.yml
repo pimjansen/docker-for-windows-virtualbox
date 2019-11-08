@@ -1,0 +1,13 @@
+- name: Ensure all packages needed by the installer are present
+  apt:
+    state: present
+    name: "{{ packages }}"
+    update_cache: yes
+  vars:
+    packages:
+      - vim
+      - curl
+      - mlocate
+      - htop
+      - git
+

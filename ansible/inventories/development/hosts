@@ -1,0 +1,4 @@
+local ansible_connection=local ansible_user=vagrant 
+
+[vagrantbox]
+local

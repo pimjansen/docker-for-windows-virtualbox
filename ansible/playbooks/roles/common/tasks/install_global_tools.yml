@@ -1,0 +1,22 @@
+- name: Ensure generic tools are present
+  apt:
+    state: present
+    name: "{{ packages }}"
+    update_cache: yes
+  vars:
+    packages:
+      - unzip
+      - tar
+      - wget
+      - ntp
+
+- name: Ensure ulimit is not too restrictive
+  shell: ulimit -n 10000
+
+- name: Enable password authentication on default
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication no"
+    line: "PasswordAuthentication yes"
+    state: present
+  notify: restart ssh

@@ -1,0 +1,44 @@
+- name: Install Samba
+  apt:
+    state: present
+    name: "{{ packages }}"
+    update_cache: yes
+  vars:
+    packages:
+      - samba
+
+- name: Create a directory if it does not exist
+  file:
+    path: /home/vagrant/repositories
+    state: directory
+    mode: '0755'
+
+- name: Expose repository folder via SMB
+  ini_file:
+    path: /etc/samba/smb.conf
+    section: vagrantbox
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items: 
+    - option: comment
+      value: vagrant box repository folder
+    - option: force group
+      value: vagrant
+    - option: path
+      value: /home/vagrant/repositories
+    - option: browsable
+      value: 'yes'
+    - option: create mask
+      value: 0644
+    - option: directory mask
+      value: 0755
+    - option: writable
+      value: 'yes'
+    - option: guest ok
+      value: 'yes'
+
+- name: Ensure SMB is restarted
+  service:
+    name: smbd
+    state: restarted
+    enabled: yes
