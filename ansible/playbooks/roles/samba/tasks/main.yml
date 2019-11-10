@@ -12,6 +12,8 @@
     path: /home/vagrant/repositories
     state: directory
     mode: '0755'
+    owner: vagrant
+    group: vagrant
 
 - name: Expose repository folder via SMB
   ini_file:
