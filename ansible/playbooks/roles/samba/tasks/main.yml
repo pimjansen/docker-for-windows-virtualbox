@@ -22,6 +22,8 @@
   with_items: 
     - option: comment
       value: vagrant box repository folder
+    - option: force user
+      value: vagrant
     - option: force group
       value: vagrant
     - option: path
