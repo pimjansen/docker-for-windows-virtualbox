@@ -23,6 +23,10 @@ if !File.exists?('.env')
     abort ".env in application root not found. Please run `cp .env.dist .env`"
 end
 
+require 'json'
+require 'dotenv'
+Dotenv.load
+
 # Check required plugins
 required_plugins = %w(vagrant-hostsupdater vagrant-env)
 need_restart = false
@@ -36,16 +40,23 @@ required_plugins.each do |plugin|
 end
 exec "vagrant #{ARGV.join(' ')}" if need_restart
 
+HOSTUPDATER_HOSTS = Array.new
+array = JSON.parse(ENV['VAGRANT.HOSTS'])
+array.each { | item |
+  HOSTUPDATER_HOSTS.push(item['host'])
+}
+
 Vagrant.configure('2') do |config|
     config.ssh.forward_agent = true
-    config.env.enable
+    config.ssh.insert_key = false
     config.ssh.keep_alive = true
+
+    config.env.enable
     config.vm.box_check_update = true
     config.vm.box = "ubuntu/bionic64"
-    config.disksize.size = '20GB'
     config.vm.network :private_network, ip: ENV['VAGRANT.SERVER.IP']
     config.vm.hostname = "docker.local"
-    #config.hostsupdater.aliases = ENV['VAGRANT.HOSTS']
+    config.hostsupdater.aliases = HOSTUPDATER_HOSTS
     config.vm.synced_folder ".", "/vagrant"
 
     config.vm.provider "virtualbox" do |v|
