@@ -9,6 +9,8 @@ Docker setup using virtualbox with SMB connection for better disk-io performance
 
 ## Setup
 
+Before starting the box, please review the configuration options so that the environment is set up correct from the start. Redoing it will probably be a waste of time :-)
+
 ```sh
 vagrant up
 ```
@@ -25,6 +27,12 @@ After all is up you can use `docker` native in your development box.
 
 To access code from your native host, a SMB share is available at `smb://<ip>/vagrantbox`. It mounts all working directories to `/home/vagrant/repositories`
 
-### SSH keys & Configuration
+### Configuration
+
+#### SSH & GIT
 
 To make life a little more easy, the SSH key and GIT config of the user that started the Vagrantbox are automaticly copied inside the box. Therefor you should be able to use your normal working flow like you are used to.
+
+#### Box config
+
+There is a `.env` file available that holds are the settings. Feel free to adjust according your personal needs
