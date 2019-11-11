@@ -9,6 +9,7 @@
       - tar
       - wget
       - ntp
+      - make
 
 - name: Ensure ulimit is not too restrictive
   shell: ulimit -n 10000
