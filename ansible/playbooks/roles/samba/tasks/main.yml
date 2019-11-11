@@ -33,9 +33,9 @@
     - option: browsable
       value: 'yes'
     - option: create mask
-      value: 0644
+      value: '644'
     - option: directory mask
-      value: 0755
+      value: '755'
     - option: writable
       value: 'yes'
     - option: guest ok

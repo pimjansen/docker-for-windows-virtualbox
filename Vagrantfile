@@ -23,10 +23,6 @@ if !File.exists?('.env')
     abort ".env in application root not found. Please run `cp .env.dist .env`"
 end
 
-require 'json'
-require 'dotenv'
-Dotenv.load
-
 # Check required plugins
 required_plugins = %w(vagrant-hostsupdater vagrant-env)
 need_restart = false
@@ -39,6 +35,11 @@ required_plugins.each do |plugin|
     end
 end
 exec "vagrant #{ARGV.join(' ')}" if need_restart
+
+
+require 'json'
+require 'dotenv'
+Dotenv.load
 
 HOSTUPDATER_HOSTS = Array.new
 array = JSON.parse(ENV['VAGRANT.HOSTS'])

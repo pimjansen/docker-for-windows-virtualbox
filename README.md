@@ -35,4 +35,4 @@ To make life a little more easy, the SSH key and GIT config of the user that sta
 
 #### Box config
 
-There is a `.env` file available that holds are the settings. Feel free to adjust according your personal needs
+There is a `.env` file available that holds all settings. Feel free to adjust according your personal needs
