@@ -4,15 +4,12 @@ module OS
   def OS.windows?
     (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   end
-
   def OS.mac?
     (/darwin/ =~ RUBY_PLATFORM) != nil
   end
-
   def OS.unix?
     !OS.windows?
   end
-
   def OS.linux?
     OS.unix? and not OS.mac?
   end
@@ -35,7 +32,6 @@ required_plugins.each do |plugin|
     end
 end
 exec "vagrant #{ARGV.join(' ')}" if need_restart
-
 
 require 'json'
 require 'dotenv'
