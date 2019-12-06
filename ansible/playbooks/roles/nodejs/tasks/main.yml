@@ -1,0 +1,11 @@
+- name: Add nodesource package
+  shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+- name: Install NodeJS
+  apt:
+    state: present
+    name: "{{ packages }}"
+    update_cache: yes
+  vars:
+    packages:
+      - nodejs

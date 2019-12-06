@@ -33,7 +33,6 @@
       - docker-ce-cli
       - containerd.io
       
-      
 - name: Add vagrant user to docker group
   user:
     name: vagrant
