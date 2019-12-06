@@ -23,6 +23,16 @@ vagrant ssh
 
 After all is up you can use `docker` native in your development box.
 
+### Windows users 
+
+For `Windows` users it is essential to run an `ssh agent`. To achieve this, put below snippet in you `GitBash` `.bashrc` file.
+
+```shell script
+# Edit your ~/.bashrc with below
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+```
+
 ### Volume mounting
 
 To access code from your native host, a SMB share is available at `smb://<ip>/vagrantbox`. It mounts all working directories to `/home/vagrant/repositories`
