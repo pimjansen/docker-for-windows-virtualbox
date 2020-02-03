@@ -2,8 +2,8 @@
 - hosts: vagrantbox
   become: true
   roles:
-#    - role: common
-#    - role: docker
-#    - role: docker-compose
-#    - role: samba
+    - role: common
+    - role: docker
+    - role: docker-compose
+    - role: samba
     - role: nodejs
