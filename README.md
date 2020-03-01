@@ -11,18 +11,6 @@ Docker setup using virtualbox with SMB connection for better disk-io performance
 
 Before starting the box, please review the configuration options so that the environment is set up correct from the start. Redoing it will probably be a waste of time :-)
 
-```sh
-vagrant up
-```
-
-## Usage
-
-```sh
-vagrant ssh
-```
-
-After all is up you can use `docker` native in your development box.
-
 ### Windows users 
 
 For `Windows` users it is essential to run an `ssh agent`. To achieve this, put below snippet in you `GitBash` `.bashrc` file.
@@ -31,6 +19,20 @@ For `Windows` users it is essential to run an `ssh agent`. To achieve this, put 
 # Edit your ~/.bashrc with below
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
+```
+
+After all is set, start up your environment by running below:
+
+```sh
+vagrant up
+```
+
+## Usage
+
+To access your development server, run below command to reach it over SSH
+
+```sh
+vagrant ssh
 ```
 
 ### Volume mounting
@@ -45,4 +47,4 @@ To make life a little more easy, the SSH key and GIT config of the user that sta
 
 #### Box config
 
-There is a `.env` file available that holds all settings. Feel free to adjust according your personal needs
+There is a `.env` file available that holds all settings. Feel free to adjust according your personal need
